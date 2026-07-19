@@ -1,0 +1,30 @@
+{
+  "name": "backend",
+  "version": "1.0.50",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "bun run --watch src/index.ts",
+    "db:push": "bunx prisma db push",
+    "db:generate": "bunx prisma generate",
+    "db:migrate": "bunx prisma migrate dev --name init",
+    "auth:generate": "bun x auth@latest generate --output src/prisma/models/auth-schema.prisma",
+    "studio": "bunx prisma studio"
+  },
+  "dependencies": {
+    "@elysia/cors": "^1.4.2",
+    "@prisma/adapter-pg": "^7.8.0",
+    "@prisma/client": "^7.8.0",
+    "better-auth": "^1.6.23",
+    "dotenv": "^17.4.2",
+    "elysia": "latest",
+    "nodemailer": "^9.0.3",
+    "pg": "^8.22.0"
+  },
+  "devDependencies": {
+    "@types/nodemailer": "^8.0.1",
+    "@types/pg": "^8.20.0",
+    "bun-types": "latest",
+    "prisma": "^7.8.0"
+  },
+  "module": "src/index.js"
+}

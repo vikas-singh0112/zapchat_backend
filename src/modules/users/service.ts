@@ -4,7 +4,6 @@ import {prisma} from "../../prisma/client";
 
 
 export abstract class User {
-	
 	static async searchUser(
 		{search, cursor, limit}: UserModel["searchUserQuery"],
 		{id: currentUserId}: UserModel["currentUserId"]

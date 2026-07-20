@@ -4,8 +4,17 @@ import {GlobalErrorPlugin} from "./plugins/globalError.plugin";
 import {GlobalResponsePlugin} from "./plugins/globalResponse.plugin";
 import {BetterAuthPlugin} from "./plugins/betterAuth.plugin";
 import {users} from "./modules/users";
+import {prisma} from "./prisma/client";
 
 const frontendUrl = process.env.FRONTEND_URL!
+
+try {
+    await prisma.$queryRaw`SELECT 1`
+    console.log("🟢 DB connected successfully");
+} catch (e) {
+    console.error("🔴 Unable to connect to DB on startup:", e);
+    process.exit(1);
+}
 
 const app = new Elysia({prefix: "/api"})
     .use(cors({
